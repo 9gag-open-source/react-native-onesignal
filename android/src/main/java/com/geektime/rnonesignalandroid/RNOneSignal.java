@@ -108,7 +108,11 @@ public class RNOneSignal extends ReactContextBaseJavaModule implements Lifecycle
 
     @ReactMethod
     public void inFocusDisplaying(int displayOption) {
-        OneSignal.setInFocusDisplaying(displayOption);
+        try {
+            OneSignal.setInFocusDisplaying(displayOption);
+        } catch (NullPointerException e) {
+            Log.e("OneSignal", "inFocusDisplaying: ", e); 
+        }
     }
 
     @ReactMethod
